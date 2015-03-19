@@ -40,7 +40,7 @@ RUN useradd -d /var/www/app --no-create-home --shell /bin/bash -g www-data -G ad
 
 # Apache + PHP-FPM
 RUN a2enmod actions fastcgi alias headers deflate rewrite; a2dismod autoindex
-RUN wget -q https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb; sudo dpkg -i mod-pagespeed-*.deb; apt-get -f install; rm mod-pagespeed-*.deb
+RUN wget -q https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb; dpkg -i mod-pagespeed-*.deb; apt-get -f install; rm mod-pagespeed-*.deb
 ADD ./config/apache2/apache2.conf /etc/apache2/apache2.conf
 ADD ./config/apache2/envvars /etc/apache2/envvars
 ADD ./config/apache2/mods-enabled/mod-security.conf /etc/apache2/mods-enabled/mod-security.conf
